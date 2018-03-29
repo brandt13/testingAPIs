@@ -10,6 +10,7 @@ public class DSRoot {
     Hourly hourly;
     Daily daily;
     Flags flags;
+    DBtempLatLong dBtempLatLong;
 
 
     public double getLatitude() {
@@ -74,5 +75,13 @@ public class DSRoot {
 
     public void setFlags(Flags flags) {
         this.flags = flags;
+    }
+
+    public DBtempLatLong getdBtempLatLong() {
+        return dBtempLatLong;
+    }
+
+    public void setdBtempLatLong(DBtempLatLong dBtempLatLong) {
+        this.dBtempLatLong = dBtempLatLong;
     }
 }

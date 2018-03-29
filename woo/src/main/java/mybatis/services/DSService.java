@@ -1,7 +1,7 @@
 package mybatis.services;
 
 import mybatis.mappers.DSMapper;
-import mybatis.model.Currently;
+import mybatis.model.DBtempLatLong;
 import mybatis.model.DSRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,21 +17,29 @@ public class DSService {
     @Autowired
     DSMapper dsMapper;
 
-    public DSRoot getWeather(double latit, double longit){
+    public DSRoot getAndSaveWeather(double latit, double longit, boolean save){
 
         String weatherQuery = "https://api.darksky.net/forecast/key/" + latit + "," + longit;
 
-        DSRoot response = restTemplate.getForObject(weatherQuery, DSRoot.class);
+        DSRoot obj = restTemplate.getForObject(weatherQuery, DSRoot.class);
 
-        return response;
+        DBtempLatLong weather = new DBtempLatLong();
+        weather.setLatitude(obj.getLatitude());
+        weather.setLongitude(obj.getLongitude());
+        weather.setTemperature(obj.getCurrently().getTemperature());
+
+        if (save) {
+            insertTempIntoDB(weather);
+        }
+
+        return obj;
     }
 
-    public void insertTempIntoDB(Currently currently){
+    public void insertTempIntoDB(DBtempLatLong db){
 
-        dsMapper.inputTemp(currently);
+        int i = dsMapper.inputTemp(db);
+        System.out.println(i);
     }
-
-
 
 
 }
