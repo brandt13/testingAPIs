@@ -19,7 +19,7 @@ public class DSService {
 
     public DSRoot getAndSaveWeather(double latit, double longit, boolean save){
 
-        String weatherQuery = "https://api.darksky.net/forecast/key/" + latit + "," + longit;
+        String weatherQuery = "https://api.darksky.net/forecast//" + latit + "," + longit;
 
         DSRoot obj = restTemplate.getForObject(weatherQuery, DSRoot.class);
 

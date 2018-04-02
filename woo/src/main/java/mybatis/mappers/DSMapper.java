@@ -13,6 +13,4 @@ public interface DSMapper {
     int inputTemp(DBtempLatLong db);
 
 
-
-
 }

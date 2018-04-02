@@ -8,6 +8,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+// To deploy to remote Tomcat server, comment out override and class extension below, as well as dependency in pom file
+
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
