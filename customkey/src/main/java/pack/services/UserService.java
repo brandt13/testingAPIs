@@ -35,6 +35,7 @@ public class UserService {
 
         String apiKey = securityService.generateApiKey();
         user.setApiKey(apiKey);
+        // user.setActive(true);
 
         int success = userMapper.insertUser(user);
 

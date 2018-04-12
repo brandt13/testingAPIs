@@ -13,11 +13,11 @@ public interface UserMapper {
 
     String GET_BY_ID = "SELECT * FROM `custom_key`.users WHERE id = #{id}";
 
-    String INSERT_USER = "INSERT INTO `custom_key`.users (firstName, lastName, email, isActive, apiKey) " +
-            "VALUES (#{firstName}, #{lastName}, #{email}, #{isActive}, #{apiKey});";
+    String INSERT_USER = "INSERT INTO `custom_key`.users (firstName, lastName, email, apiKey) " +
+            "VALUES (#{firstName}, #{lastName}, #{email}, #{apiKey});";
 
     String UPDATE_USER = "UPDATE `custom_key`.users SET firstName = #{firstName}, lastName = #{lastName}, email = #{email}, " +
-            "isActive = #{isActive}, apiKey = #{apiKey} WHERE id = #{id}";
+            "apiKey = #{apiKey} WHERE id = #{id}";
 
     String DELETE_USER = "UPDATE `custom_key`.users SET isActive = 0 WHERE id = #{id}";
 

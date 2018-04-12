@@ -25,8 +25,9 @@ public class SecurityService {
         boolean isActive = userMapper.authenticate(apiKey);
 
         try {
-            if (isActive)
+            if (isActive) {
                 return true;
+            }
         } catch (Exception e) {
             return false;
         }

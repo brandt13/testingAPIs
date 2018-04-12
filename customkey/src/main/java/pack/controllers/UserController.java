@@ -47,10 +47,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public User updateUser(@RequestBody User user) throws GeneralException, AuthenticationException {
-
-        if (securityService.authenticateApiKey(user.getApiKey()))
+    public User updateUser(@PathVariable("id") int id,
+                           @RequestBody User user) throws GeneralException, AuthenticationException {
+        user.setId(id);
+        if (securityService.authenticateApiKey(user.getApiKey())){
             return userService.updateUser(user);
+        }
         else
             throw new AuthenticationException("Invalid API Key.");
     }
